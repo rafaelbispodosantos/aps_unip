@@ -17,7 +17,7 @@ function HomeScreen() {
 
     image: null
   }
-  const [stageNew ,setStageNew ] = useState(true);
+  const [stageNew ,setStageNew ] = useState(false);
   const [hasPermission, setHasPermission] = useState(null);
   const [cameraRef, setCameraRef] = useState(null)
   const [type, setType] = useState(Camera.Constants.Type.front);
@@ -40,11 +40,15 @@ function HomeScreen() {
     return <Text>No access to camera</Text>;
   }
 
+  
+  
+  
 
 
   return (
 
     <View style={styles.container}>
+      
 
       <View style={styles.firstrow}>
 
@@ -114,7 +118,9 @@ function HomeScreen() {
 
        
       <View style={styles.fourthrow}>
-      <TouchableOpacity style={{ padding: 10 }}               >
+      <TouchableOpacity onPress={() => setStageNew(false)} 
+      
+      style={{ padding: 10 }}               >
                     <Text style={styles.btnTextStyle}>
 { stageNew ?'Faça seu cadrastro' :  'Cadastrar'} 
                     </Text>
