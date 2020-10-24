@@ -5,6 +5,7 @@ import { Button, Image, TextInput, View, Platform, Text, StyleSheet, TouchableOp
 import * as ImagePicker from 'expo-image-picker';
 import face from './assets/face.png'
 import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import login from './src/login';
@@ -24,13 +25,13 @@ export default function App() {
           let iconName;
 
           if (route.name === 'Login') {
-            iconName = focused ? 'ios-information-circle' : 'ios-information-circle-outline';
+            iconName = focused ? 'user' : 'user';
           } else if (route.name === 'Register') {
-            iconName = focused ? 'ios-list-box' : 'ios-list';
+            iconName = focused ? 'add-user' : 'add-user';
           }
 
           // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <Entypo  name={iconName} size={size} color={color} />;
         },
       })}
         tabBarOptions={{

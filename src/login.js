@@ -1,16 +1,14 @@
 // You can import Ionicons from @expo/vector-icons if you use Expo or
 // react-native-vector-icons/Ionicons otherwise.
 import React, { useState, useEffect } from 'react';
-import { Button, Image, TextInput, View, Platform, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, TextInput, View, Platform, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import face from '../assets/face.png'
 import { Ionicons } from '@expo/vector-icons';
-import { Camera } from 'expo-camera';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { server, showError, showSuccess} from './common';
 import axios from 'axios'
-
 
 
 function login() {
@@ -75,13 +73,13 @@ function login() {
 
   return (
 
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#d0e2dc', }}>
+    <View style={styles.conteiner}>
       <View>
-<Text style={{ marginBottom: 100 ,color:  '#2980b6',textAlign: 'justify',fontWeight: '700',fontSize: 17,}}> Faça login no novo reconhencimento Facial</Text>
+<Text style={styles.text}> Faça login no novo reconhencimento Facial</Text>
       </View>
       
       <Image
-          style={{ width: 200, height: 150, borderRadius: 10, alignItems: 'center' }}
+          style={styles.image}
           source={face} />
      
 
@@ -110,12 +108,28 @@ function login() {
       
 
 const styles = StyleSheet.create({
+  conteiner :{
+    flex: 1,
+     alignItems: 'center',
+      justifyContent: 'center',
+       backgroundColor: '#d0e2dc',
+       
+    },
+    text:{ marginBottom: 100 ,
+    color:  '#2980b6',
+    textAlign: 'justify',
+    fontWeight: '700',
+    fontSize: 17,},
   btnTextStyle: {
     color: '#fff',
     textAlign: 'center',
     fontWeight: '700',
     fontSize: 15,
   },
+  image: { width: 200,
+   height: 150,
+    borderRadius: 10, 
+    alignItems: 'center' },
   button: {
     flexDirection: 'row',
     justifyContent: 'center',

@@ -77,13 +77,13 @@ function cadastro() {
 
   return (
 
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#d0e2dc', }}>
+    <View style={styles.conteiner}>
       <View>
-<Text style={{ marginBottom: 100 ,color:  '#2980b6',textAlign: 'justify',fontWeight: '700',fontSize: 17,}}> Faça login no novo reconhencimento Facial</Text>
+<Text style={styles.text}> Faça login no novo reconhencimento Facial</Text>
       </View>
       
       <Image
-          style={{ width: 200, height: 150, borderRadius: 10, alignItems: 'center' }}
+          style={styles.image}
           source={face2} />
      
 
@@ -108,7 +108,28 @@ function cadastro() {
 }
 
 const styles = StyleSheet.create({
- 
+ conteiner :{
+    flex: 1,
+     alignItems: 'center',
+      justifyContent: 'center',
+       backgroundColor: '#d0e2dc',
+       
+    },
+    text:{ marginBottom: 100 ,
+    color:  '#2980b6',
+    textAlign: 'justify',
+    fontWeight: '700',
+    fontSize: 17,},
+  btnTextStyle: {
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: '700',
+    fontSize: 15,
+  },
+  image: { width: 200,
+   height: 150,
+    borderRadius: 10, 
+    alignItems: 'center' },
  
   
   
