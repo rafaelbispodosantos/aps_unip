@@ -8,7 +8,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-import login from './src/login';
+import Login from './src/screens/Login'
 import cadastro from './src/cadastro';
 
 
@@ -25,7 +25,7 @@ export default function App() {
           let iconName;
 
           if (route.name === 'Login') {
-            iconName = focused ? 'user' : 'user';
+            iconName = focused ? 'user' : 'fingerprint';
           } else if (route.name === 'Register') {
             iconName = focused ? 'add-user' : 'add-user';
           }
@@ -35,11 +35,11 @@ export default function App() {
         },
       })}
         tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
+          activeTintColor: 'blue',
+          inactiveTintColor: '#ffb5a8',
         }}
       >
-        <Tab.Screen name="Login" component={login} />
+        <Tab.Screen name="Login" component={Login} />
         <Tab.Screen name="Register" component={cadastro} />
       </Tab.Navigator>
     </NavigationContainer>
