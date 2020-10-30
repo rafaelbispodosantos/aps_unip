@@ -14,6 +14,22 @@ export default styles = StyleSheet.create({
       marginTop: 10,
       marginBottom: 40
     },
+    modalView:{
+      flex: 1, 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      backgroundColor: 'rgba(0,0,0,0.8)',
+      width: '100%'
+    },
+    modalImage:{
+      width: '80%', 
+      height: '60%', 
+      borderRadius: 24, 
+      borderWidth :1,
+      borderColor:'rgba(255,255,255,0.3)',
+      position: 'absolute', 
+      top: 100 
+    },
     tituloApp: {
       color: '#2980b6',
       textAlign: 'center',

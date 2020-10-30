@@ -1,42 +1,42 @@
 // You can import Ionicons from @expo/vector-icons if you use Expo or
 // react-native-vector-icons/Ionicons otherwise.
 import React from 'react';
-import { MaterialIcons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons'; 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from './src/screens/Login'
-import cadastro from './src/cadastro';
-
+import Cadastro from './src/screens/Cadastro'
+import NoPermissionGranted from './src/screens/NoPermissionGranted'
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
-
-
-
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={({ route }) => ({
+      <Tab.Navigator lazy={false} swipeEnabled screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
           if (route.name === 'Login') {
-            iconName = 'fingerprint';
-          } else {
-            iconName = 'account-circle';
+            iconName = 'user'
+          } else if (route.name === 'Cadastro') {
+            iconName = 'add-user'
+          }else{
+            iconName = 'circle'
           }
 
           // You can return any component that you like here!
-          return <MaterialIcons name={iconName} size={size} color={color} />;
+          return <Entypo  name={iconName} size={size} color={color} />;
         },
       })}
         tabBarOptions={{
-          activeTintColor: 'blue',
-          inactiveTintColor: '#ffb5a8',
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
         }}
       >
         <Tab.Screen name="Login" component={Login} />
-        <Tab.Screen name="Register" component={cadastro} />
+        <Tab.Screen name="Cadastro" component={Cadastro} />
+
       </Tab.Navigator>
     </NavigationContainer>
   );
