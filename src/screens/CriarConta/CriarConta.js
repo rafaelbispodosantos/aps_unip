@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Image, TextInput, View, Platform, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-import face2 from '../assets/face2.png';
+import face2 from '../../../assets/face2.png';
 
 
 
@@ -16,7 +16,7 @@ function cadastro() {
   const [email, setEmail] = useState('robson@gmail.com');
 
 
- 
+  
   
 
   useEffect(() => {
@@ -53,13 +53,13 @@ function cadastro() {
 
   return (
 
-    <View style={styles.conteiner}>
-      <View>
-<Text style={styles.text}> Faça login no novo reconhencimento Facial</Text>
+    <View style={styles.container}>
+      <View style={styles.containerTituloApp} >
+        <Text style={styles.tituloApp}> Faça login no novo reconhencimento Facial</Text>
       </View>
       
       <Image
-          style={styles.image}
+          style={ {width: '60%', height: '60%', borderRadius: 24, position: 'absolute', top: 100 , justifyContent: 'center', alignItems: 'center'}}
           source={face2} />
      
 
@@ -76,21 +76,25 @@ function cadastro() {
         onChangeText={text => {
           setName(text);}}
       />
-      <TouchableOpacity style={styles.button} onPress={ signup }>
-        <Text style={styles.btnTextStyle}>REGISTRA CONTA </Text>
-      </TouchableOpacity>
+      
     </View>
   );
 }
 
 const styles = StyleSheet.create({
- conteiner :{
-    flex: 1,
-     alignItems: 'center',
-      justifyContent: 'center',
-       backgroundColor: '#d0e2dc',
-       
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#d0e2dc',
     },
+    tituloApp: {
+        color: '#2980b6',
+        textAlign: 'center',
+        fontWeight: '700',
+        fontSize: 24,
+        justifyContent: 'flex-start'
+      },
     text:{ marginBottom: 100 ,
     color:  '#2980b6',
     textAlign: 'justify',
@@ -108,7 +112,12 @@ const styles = StyleSheet.create({
     alignItems: 'center' },
  
   
-  
+    containerTituloApp: {
+        width: '90%',
+        height: 60,
+        marginTop: 10,
+        marginBottom: 40
+      },
   btnTextStyle: {
     color: '#fff',
     textAlign: 'center',

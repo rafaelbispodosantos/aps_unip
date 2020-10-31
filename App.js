@@ -1,47 +1,95 @@
-// You can import Ionicons from @expo/vector-icons if you use Expo or
-// react-native-vector-icons/Ionicons otherwise.
-import React, { useState, useEffect } from 'react';
-import { Button, Image, TextInput, View, Platform, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import face from './assets/face.png'
-import { Ionicons } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons'; 
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as React from 'react';
+import { View, Button, Text, Animated } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import Login from './src/screens/Login'
-import cadastro from './src/cadastro';
+import { createStackNavigator } from '@react-navigation/stack';
+import Login from './src/screens/Login/index'
+import CriarConta from './src/screens/CriarConta/CriarConta'
+function Home({ navigation }) {
+  return (
+    <View style={{flex: 1}}>
+        <View>
+            <Button
+            title="CRIAR CONTA"
+            onPress={() => navigation.navigate('Profile')}
+          />
+       
+        </View>
+
+        <View style={{flex: 1}}>
+           <Login/>
+        </View>
+        </View>
+        )
+
+  
+}
+
+function Profile({ navigation }) {
+  return (
+    <View style={{flex: 1}}>
+    <View>
+    <Button title="Login" onPress={() => navigation.goBack()} />
+   
+    </View>
+
+    <View style={{flex: 1}}>
+       <CriarConta/>
+    </View>
+    </View>
+    )
 
 
-const Tab = createBottomTabNavigator();
+}
+
+
+
+
+
+
+
+const forFade = ({ current, next }) => {
+  const opacity = Animated.add(
+    current.progress,
+    next ? next.progress : 0
+  ).interpolate({
+    inputRange: [0, 1, 2],
+    outputRange: [0, 1, 0],
+  });
+
+  return {
+    leftButtonStyle: { opacity },
+    rightButtonStyle: { opacity },
+    titleStyle: { opacity },
+    backgroundStyle: { opacity },
+  };
+};
+
+const Stack = createStackNavigator();
+
+function MyStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={Home}
+        options={{
+          headerTintColor: 'white',
+          headerStyle: { backgroundColor: 'tomato' },
+        }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerStyleInterpolator: forFade }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
-
-
-
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
-          if (route.name === 'Login') {
-            iconName = focused ? 'user' : 'fingerprint';
-          } else if (route.name === 'Register') {
-            iconName = focused ? 'add-user' : 'add-user';
-          }
-
-          // You can return any component that you like here!
-          return <Entypo  name={iconName} size={size} color={color} />;
-        },
-      })}
-        tabBarOptions={{
-          activeTintColor: 'blue',
-          inactiveTintColor: '#ffb5a8',
-        }}
-      >
-        <Tab.Screen name="Login" component={Login} />
-        <Tab.Screen name="Register" component={cadastro} />
-      </Tab.Navigator>
+      <MyStack />
     </NavigationContainer>
   );
 }

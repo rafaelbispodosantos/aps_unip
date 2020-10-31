@@ -8,7 +8,8 @@ import { decode as atob } from "base-64";
 import NoPermissionGranted from '../NoPermissionGranted'
 import styles from './styles'
 
-export default function login() {
+
+export default props=> {
   const camRef = useRef(null);
   const [openModal, setOpenModal] = useState(false);
   const [permission, setPermission] = useState(null);
@@ -63,6 +64,7 @@ export default function login() {
   }
 
   return (
+    
     <View style={styles.container}>
       <View style={styles.containerTituloApp}>
         <Text style={styles.tituloApp}> Faça login no novo reconhecimento facial</Text>
@@ -96,5 +98,6 @@ export default function login() {
         <Text style={styles.btnTextStyle}>FAZER LOGIN </Text>
       </TouchableOpacity>
     </View>
+    
   );
 }
