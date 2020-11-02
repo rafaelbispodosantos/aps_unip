@@ -9,8 +9,8 @@ function Home({ navigation }) {
     <View style={{flex: 1}}>
         <View>
             <Button
-            title="CRIAR CONTA"
-            onPress={() => navigation.navigate('Profile')}
+            title="FAZER CADASTRO"
+            onPress={() => navigation.navigate('Cadastra')}
           />
        
         </View>
@@ -19,16 +19,14 @@ function Home({ navigation }) {
            <Login/>
         </View>
         </View>
-        )
-
-  
+        )  
 }
 
-function Profile({ navigation }) {
+function Cadastra({ navigation }) {
   return (
     <View style={{flex: 1}}>
     <View>
-    <Button title="Login" onPress={() => navigation.goBack()} />
+    <Button title="CRIAR CONTA" onPress={() => navigation.goBack()} />
    
     </View>
 
@@ -37,16 +35,7 @@ function Profile({ navigation }) {
     </View>
     </View>
     )
-
-
 }
-
-
-
-
-
-
-
 const forFade = ({ current, next }) => {
   const opacity = Animated.add(
     current.progress,
@@ -78,9 +67,11 @@ function MyStack() {
         }}
       />
       <Stack.Screen
-        name="Profile"
-        component={Profile}
-        options={{ headerStyleInterpolator: forFade }}
+        name="Cadastra"
+        component={Cadastra}
+        options={{ headerStyleInterpolator: forFade,
+          headerTintColor: 'white', 
+          headerStyle: { backgroundColor: 'tomato' }}}
       />
     </Stack.Navigator>
   );

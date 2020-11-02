@@ -4,6 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { Button, Image, TextInput, View, Platform, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import face2 from '../assets/face2.png';
+import { Ionicons } from '@expo/vector-icons';
+import { Camera } from 'expo-camera';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import { server, showError, showSuccess } from './common';
+import axios from 'axios';
 
 
 
@@ -16,7 +22,22 @@ function cadastro() {
   const [email, setEmail] = useState('robson@gmail.com');
 
 
- 
+  signup = async()=> {
+      try{
+          await axios.post(`${server}/signup`,{
+              name: {name},
+              email: {senha},
+              password: {senha}
+             
+          })
+
+          showSucess('Usuario cadastrado!')
+        
+                }
+                catch(e){
+                    showError(e)
+                }
+  }
   
 
   useEffect(() => {
@@ -49,7 +70,10 @@ function cadastro() {
       
     }
   };
-
+  const fileToUpload = image;
+      const data = new FormData();
+      data.append('type', 'video');
+      data.append('file_attachment', fileToUpload);
 
   return (
 
