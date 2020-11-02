@@ -26,12 +26,12 @@ function Cadastra({ navigation }) {
   return (
     <View style={{flex: 1}}>
     <View>
-    <Button title="CRIAR CONTA" onPress={() => navigation.goBack()} />
+    <Button title="CRIAR CONTA" onPress={() =>  navigation.goBack()} />
    
     </View>
 
     <View style={{flex: 1}}>
-       <CriarConta/>
+       <CriarConta />
     </View>
     </View>
     )
